@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using TheHashSlingingSlasher.Models;
 
@@ -12,41 +7,43 @@ namespace TheHashSlingingSlasher.Controllers
     public class BarangController : Controller
     {
         public static List<BarangModel> listBarang = new List<BarangModel>();
-        // GET: Barang
-        public ActionResult Index(string command)
+        public ActionResult Index()
         {
-            if (listBarang != null && listBarang.Count > 0)
-            {
-                return View(listBarang);
-            }
-
-            for (int i = 0; i < 10; i++)
-            {
-                BarangModel newBarang = new BarangModel();
-                newBarang.KodeBarang = "KodeBarang" + i;
-                newBarang.NamaBarang = "NamaBarang" + i;
-                newBarang.Keterangan = "Keterangan" + i;
-                newBarang.Jumlah = 100;
-                listBarang.Add(newBarang);
-            }
-
-
             return View(listBarang);
-            
-
+        }
+        [ActionName("Index")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel(Name = "ActionBtn2", Data = "Add")]
+        public ActionResult Add()
+        {
+            return RedirectToAction("Tambah");
+        }
+        [ActionName("Index")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel2(Name = "ActionBtn2", Data = "Delete")]
+        public ActionResult Delete()
+        {
+            listBarang.Clear();
+            return RedirectToAction("Index");
         }
         public ActionResult Tambah()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Tambah(BarangModel barang)
+        [ActionName("Tambah")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel2(Name = "TambahAction2", Data = "Save")]
+        public ActionResult Save(BarangModel Barang)
         {
-            listBarang.Add(barang);
+            listBarang.Add(Barang);
             return RedirectToAction("Index");
         }
-
-
+        [ActionName("Tambah")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel(Name = "TambahAction2", Data = "Cancel")]
+        public ActionResult Cancel()
+        {
+            return RedirectToAction("Index");
+        }
     }
-    
 }

@@ -12,41 +12,44 @@ namespace TheHashSlingingSlasher.Controllers
     public class KategoriController : Controller
     {
         public static List<KategoriModel> listKategori = new List<KategoriModel>();
-        // GET: Kategori
-        public ActionResult Index(string command)
+        public ActionResult Index()
         {
-            if (listKategori != null && listKategori.Count > 0)
-            {
-                return View(listKategori);
-            }
-
-            for (int i = 0; i < 10; i++)
-            {
-                KategoriModel newKategori = new KategoriModel();
-                newKategori.KodeKategori = "KodeKategori" + i;
-                newKategori.NamaKategori = "NamaKategori" + i;
-                newKategori.Keterangan = "Keterangan" + i;
-                newKategori.Jumlah = 100;
-                listKategori.Add(newKategori);
-            }
-
-
             return View(listKategori);
-            
-
         }
-        public ActionResult Tambah()
+        [ActionName("Index")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel(Name = "ActionBtn", Data = "Tambahkan")]
+        public ActionResult Tambahkan()
+        {
+            return RedirectToAction("TambahKategori");
+        }
+        [ActionName("Index")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel(Name = "ActionBtn", Data = "Hapus")]
+        public ActionResult Hapus()
+        {
+            listKategori.Clear();
+            return RedirectToAction("Index");
+        }
+        public ActionResult TambahKategori()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Tambah(KategoriModel Kategori)
+        [ActionName("TambahKategori")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel2(Name = "TambahAction", Data = "Simpan")]
+        public ActionResult Simpan(KategoriModel Kategori)
         {
             listKategori.Add(Kategori);
             return RedirectToAction("Index");
         }
-
+        [ActionName("TambahKategori")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel2(Name = "TambahAction", Data = "Batal")]
+        public ActionResult Batal()
+        {
+            return RedirectToAction("Index");
+        }
 
     }
-    
 }

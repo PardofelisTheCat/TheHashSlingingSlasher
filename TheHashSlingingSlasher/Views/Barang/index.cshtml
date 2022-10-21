@@ -3,16 +3,16 @@
     ViewBag.Title = "Index";
 
 }
-
+<h1>Daftar Barang</h1>
 <div>
     <table class="table table-striped table-bordered table-hover table-checkable order-column table-responsive">
         <thead class="thead-dark">
-        <tr>
-            <th><center>Kode Barang</center></th>
-            <th><center>Nama Barang</center></th>
-            <th><center>Jumlah</center></th>
-            <th><center>Keterangan</center></th>
-        </tr>
+            <tr>
+                <th><center>Kode Barang</center></th>
+                <th><center>Nama Barang</center></th>
+                <th><center>Jumlah</center></th>
+                <th><center>Keterangan</center></th>
+            </tr>
         </thead>
         <tbody>
             @for (int i = 0; i < Model.Count; i++)
@@ -32,8 +32,11 @@
 
 <br />
 <br />
-<a href="/Barang/Tambah"><button type="button" class="btn btn-primary">Tambah</button></a>
-<button type="button">Hapus</button>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Add" name="ActionBtn2" class="btn btn-primary" />
+    <input type="submit" value="Delete" name="ActionBtn2" class="btn btn-danger" />
+}
 <br />
 <br />
 
