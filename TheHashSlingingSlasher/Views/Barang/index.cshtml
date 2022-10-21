@@ -1,0 +1,40 @@
+﻿@model List<TheHashSlingingSlasher.Models.BarangModel>
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<div>
+    <table class="table table-striped table-bordered table-hover table-checkable order-column table-responsive">
+        <thead class="thead-dark">
+        <tr>
+            <th><center>KodeBarang</center></th>
+            <th><center>NamaBarang</center></th>
+            <th><center>Jumlah</center></th>
+            <th><center>Keterangan</center></th>
+        </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].KodeBarang</td>
+                    <td>@Model[i].NamaBarang</td>
+                    <td>@Model[i].Jumlah</td>
+                    <td>@Model[i].Keterangan</td>
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+</div>
+
+<br />
+<br />
+<a href="/Barang/Tambah"><button type="button" class="btn btn-primary">Tambah</button></a>
+<button type="reset">DELETE</button>
+<br />
+<br />
+
+
