@@ -13,18 +13,16 @@ namespace TheHashSlingingSlasher.Controllers
             return View("Index");
         }
 
-        public ActionResult About(int? nilai )
+        public ActionResult Nilai(int? nilai )
         {
 
-            ViewBag.Message = "yeah.";
-            /*  ViewBag.Nilai = "";*/
-            string color = null;
+            ViewBag.Message = "yeah...";
+            string keterangan;
 
-
-            string keterangan = "";
+            string color;
             if (nilai >= 90)
             {
-                keterangan = "Cool bro";
+                keterangan = "Cool!";
                 color = "green";
 
 
@@ -32,21 +30,21 @@ namespace TheHashSlingingSlasher.Controllers
 
             else if (nilai >= 75 && nilai < 90)
             {
-                keterangan = " Great ";
+                keterangan = "Great! ";
                 color = "yellow";
             }
             else
             {
-                keterangan = "Fools";
+                keterangan = "Too Bad!";
                 color = "red";
             }
 
-            AboutModel model = new AboutModel();
-
-            model.Nilai = nilai;
-            model.Keterangan = keterangan;
-            /*model.tanggal = DateTime.Now;*/
-            model.Warna = color;
+            AboutModel model = new AboutModel
+            {
+                Nilai = nilai,
+                Keterangan = keterangan,
+                Warna = color
+            };
 
 
             return View(model);
