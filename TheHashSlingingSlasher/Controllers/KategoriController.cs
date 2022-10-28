@@ -19,7 +19,20 @@ namespace TheHashSlingingSlasher.Controllers
         [ActionName("Index")]
         [AcceptVerbs(HttpVerbs.Post)]
         [AttributeModel(Name = "ActionBtn", Data = "Tambahkan")]
-        public ActionResult Tambah()
+
+        public ActionResult Tambahkan()
+        {
+            return RedirectToAction("TambahKategori");
+        }
+        [ActionName("Index")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [AttributeModel(Name = "ActionBtn", Data = "Hapus")]
+        public ActionResult Hapus()
+        {
+            listKategori.Clear();
+            return RedirectToAction("Index");
+        }
+        public ActionResult TambahKategori()
         {
             return RedirectToAction("TambahKategori");
         }
