@@ -6,7 +6,6 @@ This Repository were made to store my project for a class. I mainly used PHP for
 
 What it can do (For Now) :
 * Add or Remove an Item List and Category
-* Add a Category
 * Fully Responsive Navbar
 * Rickroll (lol)
 
