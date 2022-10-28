@@ -1,4 +1,5 @@
-The Hash Slinging Slasher
+<h1>The Hash Slinging Slasher </h1>
+<h6>v0.5-beta1</h6>
 
 
 This Repository were made to store my project for a class. I mainly used PHP for web and for daily uses i mainly used Java and C++ (though i plan to learn Kotlin someday) so.... This probably would take some time to finish lol
